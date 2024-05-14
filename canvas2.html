@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>canvasynch</title>
+    <link rel="stylesheet" href="lib\bootstrap-5.2.0-dist\css\bootstrap.min.css" />
+    <link rel="stylesheet" href="src\css\styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" />
+    <script type="text/javascript" src="lib\bootstrap-5.2.0-dist\js\bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="src\js\scripts.js"></script>
+    <script type="text/javascript" src="src\js\names.js"></script>
+    <script type="text/javascript" src="src\js\randomCanvas.js"></script>
+    <script type="text/javascript" src="src\js\avatars.js"></script>
+</head>
+
+<body>
+
+    <template id="button">
+        <button class="btn btn-paint btn-L" data-target="#nyiModal" data-nyi="botón no implementado">
+            <slot name="text"></slot>
+            <slot name="btn-outline"></slot>
+        </button>
+    </template>
+
+    <template id="button-S">
+        <button class="btn btn-paint btn-S">
+            <slot name="btn-outline"></slot>
+        </button>
+    </template>
+
+    <template id="user">
+        <div class="col col-12 col-md-4 col-lg-2 py-md-4 user">
+            <div class="row gap-0 gap-md-4">
+                <div class="col-4 col-md-12 text-center">
+                    <slot class="w-75" name="user-pic"></slot>
+                </div>
+                <div class="col-8 col-md-12">
+                    <div class="input-container mx-md-auto mb-2">
+                        <slot class="user-name py-2 px-3 w-100" name="user-name"></slot>
+                        <img class="input-outline drawn-outline" src="img/input_outline_1.png" />
+                    </div>
+                    <div class="input-container mx-md-auto mb-2">
+                        <slot class="user-email py-2 px-3 w-100" name="user-email"></slot>
+                        <img class="input-outline drawn-outline" src="img/input_outline_1.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <main id="app" class="p-3">
+        <header class="logo">
+            <img class="logo-img" src="img/logo.png" />
+            <h1 class="logo-text"><span class="logo-highlight">canvas</span>ynch</h1>
+        </header>
+
+
+        <section id="inner">
+            <header class="tabs d-flex">
+                <button class="tab btn d-inline-block" data-target="#nyiModal" data-nyi="pestaña no implementada">Canvas</button>
+                <button class="tab btn d-inline-block" data-target="#nyiModal" data-nyi="pestaña no implementada">Slides</button>
+                <button class="tab btn d-inline-block" id="logout">Log out</button>
+            </header>
+            <div class="content container-fluid">
+                <div class="row h-100 py-3 flex-column flex-md-row gap-4 gap-md-0">
+                    <div data-template="#user">
+                        <img class="user-pic" src="img/users/dazerine.png" alt="dazerine" slot="user-pic" />
+                        <input type="text" slot="user-name" value="dazerine" />
+                        <input type="text" slot="user-email" value="dazerine@dazerine.com" />
+                    </div>
+                    <div class="col flex-grow-1 col-sm-12 col-md-8 col-lg-10 py-md-4">
+                        <section class="drawing-area h-100">
+                            <img id="artwork" src="img/logo.png" data-artwork="bauhaus" />
+                            <div class="row h-100 flex-column flex-lg-row">
+                                <div class="col-12 col-lg-4 col-xl-2">
+                                    <div class="toolbar h-100 p-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div data-template="#button">
+                                                    <span slot="text">Create</span>
+                                                    <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_1.png" />
+                                                </div>
+                                                <div data-template="#button">
+                                                    <span slot="text">Name</span>
+                                                    <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_1.png" />
+                                                </div>
+                                                <div data-template="#button">
+                                                    <span slot="text">Password</span>
+                                                    <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_1.png" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="input-container">
+                                                    <input type="text" value="search" class="py-2 px-3 w-100" />
+                                                    <img class="input-outline drawn-outline" src="img/input_outline_1.png" />
+                                                </div>
+                                                <div class="tools" id="canvasSel">
+                                                    <header>herramientas</header>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                    <div data-template="#button-S">
+                                                        <img slot="btn-outline" class="btn-outline drawn-outline" src="img/btn_outline_s_1.png" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-8 col-xl-10">
+                                    <div class="dummy"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- NYI Modal -->
+    <div class="modal fade" id="nyiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    NYI
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="sound-btn-click" src="media\blip.mp3"></audio>
+
+</body>
+
+</html>
